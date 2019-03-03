@@ -6,4 +6,10 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :products, dependent: :destroy
+  has_many :orders_as_vendor, dependent: :destroy,
+                              class_name: :Order, inverse_of: :vendor,
+                              foreign_key: :vendor_id
+  has_many :orders_as_client, dependent: :destroy,
+                              class_name: :Order, inverse_of: :client,
+                              foreign_key: :client_id
 end
