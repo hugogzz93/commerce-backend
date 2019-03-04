@@ -7,7 +7,7 @@ module Types
       end
 
       define_method name.to_s do |query = nil|
-        name.to_s.singularize.capitalize.constantize.where(query)
+        name.to_s.camelcase.singularize.capitalize.constantize.where(query)
       end
     end
 
@@ -15,5 +15,6 @@ module Types
     add_model_query :categories, [CategoryType]
     add_model_query :products, [ProductType]
     add_model_query :orders, [OrderType]
+    add_model_query :order_items, [OrderItemType]
   end
 end

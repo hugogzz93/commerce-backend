@@ -12,4 +12,5 @@ RSpec.describe Product, type: :model do
   it { should validate_numericality_of(:stock).is_greater_than_or_equal_to(0).only_integer }
   it { should belong_to(:user)}
   it { should belong_to(:category)}
+  it { should have_many(:order_items).dependent(:restrict_with_error)}
 end

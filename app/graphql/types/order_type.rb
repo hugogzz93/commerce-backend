@@ -7,7 +7,7 @@ module Types
     field :group_id, String, null: true
     field :client, UserType, null: false
     field :vendor, UserType, null: false
-    # field :products, [ProductType], null: false
+    field :order_items, [OrderItemType], null: false
     field :created_at, String, null: false
   end
 end
