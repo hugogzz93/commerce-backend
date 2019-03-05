@@ -13,14 +13,14 @@ class User < ApplicationRecord
                               class_name: :Order, inverse_of: :client,
                               foreign_key: :client_id
   has_many :order_items_as_vendor,
-             dependent: :destroy,
-             class_name: :OrderItem,
-             through: :orders_as_vendor,
-             source: :order_items
+           dependent: :destroy,
+           class_name: :OrderItem,
+           through: :orders_as_vendor,
+           source: :order_items
 
   has_many :order_items_as_client,
-             dependent: :destroy,
-             class_name: :OrderItem,
-             through: :orders_as_client,
-             source: :order_items
+           dependent: :destroy,
+           class_name: :OrderItem,
+           through: :orders_as_client,
+           source: :order_items
 end

@@ -6,5 +6,6 @@ RSpec.describe Order, type: :model do
   it {should validate_presence_of(:status)}
   it {should belong_to(:client)}
   it {should belong_to(:vendor)}
+  it {should have_many(:order_items).dependent(:destroy)}
   it {should define_enum_for(:status).with([ :in_progress, :in_transit, :delivered, :canceled])}
 end

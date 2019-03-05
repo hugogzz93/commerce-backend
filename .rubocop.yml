@@ -4,6 +4,7 @@ AllCops:
   TargetRubyVersion: 2.4
   Exclude:
     - app/controllers/graphql_controller.rb
+    - lib/base_ops.rb
     - "bin/*"
     - Capfile
     - config/boot.rb
