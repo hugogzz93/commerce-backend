@@ -3,7 +3,7 @@ module Types
     def self.add_model_query(model)
       name = model.name
       field name.downcase.pluralize, ["Types::#{name}Type".constantize], null: false do
-        argument :query, "Types::#{name}InputType".constantize, required: false
+        argument :query, "Types::#{name}QueryType".constantize, required: false
       end
 
       define_method name.to_s.pluralize.downcase do |query: nil|

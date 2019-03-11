@@ -1,5 +1,5 @@
 module Types
-  class OrderQueryType < Types::BaseObject
+  class OrderQueryType < Types::BaseInputObject
     argument :id, String, required: false
   end
 end
