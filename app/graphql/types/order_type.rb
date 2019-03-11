@@ -1,5 +1,6 @@
 module Types
   class OrderType < Types::BaseObject
+
     field :id, ID, null: false
     field :client_id, ID, null: false
     field :vendor_id, ID, null: false
