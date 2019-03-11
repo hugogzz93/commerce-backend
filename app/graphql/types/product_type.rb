@@ -5,5 +5,6 @@ module Types
     field :user, UserType, null: false
     field :stock, Int, null: false
     field :price, Float, null: false
+    field :category, CategoryType, null: false
   end
 end
