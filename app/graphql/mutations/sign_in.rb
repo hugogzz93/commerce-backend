@@ -7,6 +7,7 @@ module Mutations
 
     def resolve(email:, password:)
       user = User.find_by_email(email)
+      return nil unless user
       auth_token = Devise.friendly_token
       user.update! authentication_token: auth_token
       {auth_token: auth_token}

@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
+    field :signOut, mutation: Mutations::SignOut
     UserOps = BaseOps.create_default_mutation(User)
     ProductOps = BaseOps.create_default_mutation(Product)
 
@@ -12,6 +13,7 @@ module Types
     end
 
     field :sign_in, mutation: Mutations::SignIn
+    field :sign_out, mutation: Mutations::SignOut
 
     def user(id: nil)
       id ? User.find(id) : UserOps
