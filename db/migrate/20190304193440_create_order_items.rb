@@ -4,6 +4,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
       t.belongs_to :product, null: false, index: true
       t.belongs_to :order, null: false, index: true
       t.float :price, null: false
+      t.integer :amount, null: false
       t.timestamps
     end
   end
