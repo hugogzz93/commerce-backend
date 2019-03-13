@@ -1,10 +1,10 @@
 module OrderGrouper
-  def make_group(orders)
+  def self.make_group(orders)
     id = SecureRandom.uuid
     orders.each { |e| e.group_id = id }
   end
 
-  def create_group(ungrouped_orders)
+  def self.create_group(ungrouped_orders)
     begin
       ActiveRecord::Base.transaction do
         make_group(ungrouped_orders).each(&:save!)
