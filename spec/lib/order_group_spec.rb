@@ -13,7 +13,7 @@ RSpec.describe do
     end
   end
 
-  describe '.create_group' do
+  describe '.create_group!' do
     INVALID_ITEM_AMOUNT = -1
     ORDER_AMOUNT = 5
 
@@ -28,13 +28,23 @@ RSpec.describe do
         end
 
         it 'commits nothing to database' do
-          expect { subject.create_group(@orders) }.not_to change { Order.count }
+          expect { 
+            begin
+              subject.create_group!(@orders)
+            rescue
+            end
+          }.not_to change { Order.count }
+
+        end
+
+        it 'raises RecordInvalid' do
+          expect{ subject.create_group!(@orders) }.to raise_error(ActiveRecord::RecordInvalid)
         end
       end
 
       context 'when orders are valid' do
         it 'commits orders to database' do
-          expect { subject.create_group(@orders) }.to change { Order.count }.by(ORDER_AMOUNT)
+          expect { subject.create_group!(@orders) }.to change { Order.count }.by(ORDER_AMOUNT)
         end
       end
 

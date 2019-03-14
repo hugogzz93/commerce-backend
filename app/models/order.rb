@@ -5,5 +5,7 @@ class Order < ApplicationRecord
   validates :status, presence: true
   belongs_to :client, class_name: :User, inverse_of: :orders_as_client
   belongs_to :vendor, class_name: :User, inverse_of: :orders_as_vendor
-  has_many :order_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy, index_errors: true
+
+  accepts_nested_attributes_for :order_items
 end

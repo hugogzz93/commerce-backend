@@ -6,7 +6,7 @@ class OrderItem < ApplicationRecord
   before_validation :set_same_price_as_product
 
   validates :price, presence: true,
-                    numericality: { greater_than: 0}
+                    numericality: { greater_than: 0 }
 
   validates :amount, presence: true,
     numericality: { greater_than: 0,

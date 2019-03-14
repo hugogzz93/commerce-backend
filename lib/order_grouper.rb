@@ -4,13 +4,9 @@ module OrderGrouper
     orders.each { |e| e.group_id = id }
   end
 
-  def self.create_group(ungrouped_orders)
-    begin
-      ActiveRecord::Base.transaction do
-        make_group(ungrouped_orders).each(&:save!)
-      end
-    rescue ActiveRecord::RecordInvalid
-      return ungrouped_orders
+  def self.create_group!(ungrouped_orders)
+    ActiveRecord::Base.transaction do
+      make_group(ungrouped_orders).each(&:save!)
     end
   end
 end

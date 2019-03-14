@@ -16,8 +16,15 @@ RSpec.describe OrderItem, type: :model do
       @orderItem = create :order_item
     end
 
-    it 'should have same price as its product' do
-      expect(@orderItem.price).to eq(@orderItem.product.price)
+    describe 'inventory integrity' do
+      xit 'should reduce inventory stock by ordered amount'
     end
+
+    describe 'product integrity' do
+      it 'should have same price as its product' do
+        expect(@orderItem.price).to eq(@orderItem.product.price)
+      end
+    end
+
   end
 end
