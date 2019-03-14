@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
   before_save :ensure_authentication_token
 
+  def order_groups
+    orders_as_client.pluck(:group_id).uniq.map {|gid| OrderGroup.new gid}
+  end
+
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token

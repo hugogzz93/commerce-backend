@@ -8,4 +8,8 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy, index_errors: true
 
   accepts_nested_attributes_for :order_items
+
+  def total
+    order_items.sum :price
+  end
 end

@@ -6,7 +6,7 @@ module OrderGrouper
 
   def self.create_group!(ungrouped_orders)
     ActiveRecord::Base.transaction do
-      make_group(ungrouped_orders).each(&:save!)
+      OrderGroup.new make_group(ungrouped_orders).each(&:save!).sample.group_id
     end
   end
 end
