@@ -5,14 +5,13 @@ module GraphqlRelationHelper
       argument :query, "Types::#{model}QueryType".constantize, required: false
     end
 
-    define_method relation do |req = nil|
-
-      if(req)
+    define_method relation do |req=nil|
+      if req
         query = req[:query].to_h
-        query[:id] = query.delete(:ids) if query.has_key?(:ids)
+        query[:id] = query.delete(:ids) if query.key?(:ids)
       end
 
-      if(object)
+      if object
         object.send(relation).where(query)
       else
         model.constantize.where(query)

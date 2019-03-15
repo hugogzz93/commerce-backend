@@ -28,7 +28,7 @@ class User < ApplicationRecord
   before_save :ensure_authentication_token
 
   def order_groups
-    orders_as_client.pluck(:group_id).uniq.map {|gid| OrderGroup.new gid}
+    orders_as_client.pluck(:group_id).uniq.map { |gid| OrderGroup.new gid }
   end
 
   def ensure_authentication_token
@@ -42,7 +42,7 @@ class User < ApplicationRecord
   def generate_authentication_token
     loop do
       token = Devise.friendly_token
-      break token unless User.where(authentication_token: token).first
+      break token unless User.find_by(authentication_token: token)
     end
   end
 end

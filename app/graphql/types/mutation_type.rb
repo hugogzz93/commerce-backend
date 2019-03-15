@@ -15,10 +15,8 @@ module Types
       argument :id, ID, required: false
     end
 
-
     field :sign_in, mutation: Mutations::SignIn
     field :sign_out, mutation: Mutations::SignOut
-
 
     def user(id: nil)
       id ? User.find(id) : UserOps

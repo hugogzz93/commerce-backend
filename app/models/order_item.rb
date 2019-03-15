@@ -9,10 +9,9 @@ class OrderItem < ApplicationRecord
                     numericality: { greater_than: 0 }
 
   validates :amount, presence: true,
-    numericality: { greater_than: 0,
-                    only_integer: true,
-                    less_than_or_equal_to: -> (item) {item.product.stock} }
-
+                     numericality: { greater_than: 0,
+                                     only_integer: true,
+                                     less_than_or_equal_to: ->(item) { item.product.stock } }
 
   def set_same_price_as_product
     self.price = product.price
