@@ -1,9 +1,17 @@
 module Types
+  class OrderStatus < Types::BaseEnum
+    value "in_progress"
+    value "in_transit"
+    value "delivered"
+    value "canceled"
+  end
+
   class OrderType < Types::BaseObject
     field :id, ID, null: false
     field :client_id, ID, null: false
     field :vendor_id, ID, null: false
-    field :status, String, null: false
+    field :status, OrderStatus, null: false
+    field :total, Float, null: false
     field :group_id, String, null: true
     field :client, UserType, null: false
     field :vendor, UserType, null: false

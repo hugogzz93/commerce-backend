@@ -7,5 +7,6 @@ module Types
     field :name, String, null: false
     field :email, String, null: false
     field :order_groups, [OrderGroupType], null: false
+    field :orders_as_vendor, [OrderType], null: false
   end
 end
