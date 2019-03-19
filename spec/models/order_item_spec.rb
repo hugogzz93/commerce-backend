@@ -13,14 +13,20 @@ RSpec.describe OrderItem, type: :model do
 
   context 'on creation' do
     before do
-      @orderItem = create :order_item
+      @orderItem = build :order_item
     end
 
     describe 'inventory integrity' do
-      xit 'should reduce inventory stock by ordered amount'
+      it 'should reduce inventory stock by ordered amount' do
+        expect{ @orderItem.save! }.to change { @orderItem.product.stock }.by(@orderItem.amount * -1)
+      end
     end
 
     describe 'product integrity' do
+      before do
+        @orderItem.save
+      end
+
       it 'should have same price as its product' do
         expect(@orderItem.price).to eq(@orderItem.product.price)
       end

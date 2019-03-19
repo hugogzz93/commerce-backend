@@ -13,7 +13,13 @@ class OrderItem < ApplicationRecord
                                      only_integer: true,
                                      less_than_or_equal_to: ->(item) { item.product.stock } }
 
+  after_create :reduce_inventory_by_amount!
+
   def set_same_price_as_product
     self.price = product.price
+  end
+
+  def reduce_inventory_by_amount!
+    product.update!({stock: product.stock - amount})
   end
 end
