@@ -5,5 +5,6 @@ module Types
     argument :price, Float, required: false
     argument :user_id, ID, required: false
     argument :category_id, ID, required: false
+    argument :image, ApolloUploadServer::Upload, required: false
   end
 end

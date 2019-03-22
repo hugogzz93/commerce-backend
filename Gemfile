@@ -35,9 +35,12 @@ gem 'rack-cors'
 gem 'devise'
 gem 'graphql'
 gem 'graphiql-rails'
+gem 'graphql-rails_logger'
+gem 'apollo_upload_server', '2.0.0.beta.3'
 
 gem 'rubocop'
 
+gem 'aws-sdk', '~> 3'
 #============================================================================
 #End Custom
 #============================================================================

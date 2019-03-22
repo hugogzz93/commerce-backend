@@ -6,7 +6,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.float :price, null: false, default: 0
       t.belongs_to :user, null: false
       t.belongs_to :category, null: false
-      t.string :image
       t.timestamps
     end
   end

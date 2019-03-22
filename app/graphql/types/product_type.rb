@@ -11,5 +11,10 @@ module Types
     field :user, UserType, null: false
     field :stock, Int, null: false
     field :price, Float, null: false
+    field :image, String, null: true
+
+    def image
+      object.image.service_url
+    end
   end
 end
