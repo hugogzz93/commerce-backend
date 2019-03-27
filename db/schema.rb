@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_213243) do
+ActiveRecord::Schema.define(version: 2019_03_27_230127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,22 @@ ActiveRecord::Schema.define(version: 2019_03_20_213243) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "country", null: false
+    t.string "full_name", null: false
+    t.string "street1", null: false
+    t.string "street2"
+    t.string "city", null: false
+    t.string "zip", null: false
+    t.string "phone", null: false
+    t.string "security_code"
+    t.text "instructions"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -61,6 +77,8 @@ ActiveRecord::Schema.define(version: 2019_03_20_213243) do
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["vendor_id"], name: "index_orders_on_vendor_id"
   end

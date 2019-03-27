@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  has_many :addresses, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :orders_as_vendor, dependent: :destroy,
                               class_name: :Order, inverse_of: :vendor,

@@ -8,4 +8,5 @@ RSpec.describe User, type: :model do
   it { should have_many(:order_items_as_client) }
   it { should have_many(:orders_as_vendor) }
   it { should have_many(:orders_as_client) }
+  it { should have_many(:addresses).dependent(:destroy) }
 end
