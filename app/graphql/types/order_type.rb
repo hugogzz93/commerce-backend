@@ -7,6 +7,11 @@ module Types
   end
 
   class OrderType < Types::BaseObject
+    extend GraphqlRelationHelper
+    # TODO add classNames to relation helper
+    # belongs_to :vendor, class_name: :user
+    belongs_to :address
+
     field :id, ID, null: false
     field :client_id, ID, null: false
     field :vendor_id, ID, null: false

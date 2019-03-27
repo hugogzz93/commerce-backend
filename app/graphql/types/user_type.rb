@@ -2,6 +2,7 @@ module Types
   class UserType < Types::BaseObject
     extend GraphqlRelationHelper
     has_many :products
+    has_many :addresses
 
     field :id, ID, null: false
     field :name, String, null: false
