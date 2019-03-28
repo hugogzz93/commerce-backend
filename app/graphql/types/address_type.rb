@@ -6,7 +6,7 @@ module Types
 
     field :country, String, null: false
     field :full_name, String, null: false
-    field :street1,String, null: false
+    field :street1, String, null: false
     field :street2, String, null: true
     field :city, String, null: false
     field :zip, String, null: false

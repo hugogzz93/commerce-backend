@@ -14,11 +14,9 @@ module Types
     field :image, String, null: true
 
     def image
-      begin
-        object.image.service_url
-      rescue
-        nil
-      end
+      object.image.service_url
+    rescue StandardError
+      nil
     end
   end
 end

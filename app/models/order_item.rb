@@ -20,6 +20,6 @@ class OrderItem < ApplicationRecord
   end
 
   def reduce_inventory_by_amount!
-    product.update!({stock: product.stock - amount})
+    product.update!(stock: product.stock - amount)
   end
 end
