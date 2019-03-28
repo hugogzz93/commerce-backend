@@ -5,7 +5,7 @@ FactoryBot.define do
     address
 
     factory :order_with_items do
-      # TODO: after create add items
+      order_items { [ create(:order_item) ]}
     end
   end
 end
