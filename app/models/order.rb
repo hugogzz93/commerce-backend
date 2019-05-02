@@ -16,4 +16,13 @@ class Order < ApplicationRecord
   def total
     order_items.sum :price
   end
+
+  # TODO: no default address 
+
+  def use_default_address
+    self.address = client.addresses.first
+  end
+
+  before_validation :use_default_address, on: :create
+
 end

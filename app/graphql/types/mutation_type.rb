@@ -15,6 +15,8 @@ module Types
       argument :id, ID, required: false
     end
 
+    field :payment, Mutations::PaymentOps, null: false
+
     field :sign_in, mutation: Mutations::SignIn
     field :sign_out, mutation: Mutations::SignOut
 
@@ -28,6 +30,10 @@ module Types
 
     def order(id: nil)
       id ? Order.find(id) : Mutations::OrderOps
+    end
+
+    def payment
+      Mutations::PaymentOps
     end
   end
 end
