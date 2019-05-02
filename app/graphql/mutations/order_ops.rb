@@ -14,7 +14,7 @@ module Mutations
       end
       begin
         OrderGrouper.create_group!(orders)
-      rescue ActiveRecord::RecordInvalid
+      rescue ActiveRecord::RecordInvalid => e
         GraphQL::ExecutionError.new("RecordInvalid")
       end
     end

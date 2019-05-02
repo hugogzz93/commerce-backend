@@ -8,12 +8,16 @@ class OrderGroup
     Order.where(group_id: @id)
   end
 
+  def order_items
+    OrderItem.joins(:order).where(orders: { group_id: @id })
+  end
+
   def created_at
     orders.first.created_at
   end
 
   def total
-    orders.joins(:order_items).sum(:price)
+    order_items.sum :price
   end
 
   def status

@@ -15,11 +15,17 @@ class OrderItem < ApplicationRecord
 
   after_create :reduce_inventory_by_amount!
 
+  delegate :name, to: :product
+
   def set_same_price_as_product
     self.price = product.price
   end
 
   def reduce_inventory_by_amount!
     product.update!(stock: product.stock - amount)
+  end
+
+  def total
+    price * amount
   end
 end

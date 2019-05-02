@@ -1,7 +1,7 @@
 module Types
   class MutationType < Types::BaseObject
-    UserOps = BaseOps.create_default_mutation(User)
-    ProductOps = BaseOps.create_default_mutation(Product)
+    UserOps = GraphqlMutation.create_ops_for User
+    ProductOps = GraphqlMutation.create_ops_for Product
 
     field :product, ProductOps, null: false do
       argument :id, ID, required: false
