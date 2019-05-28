@@ -2,12 +2,17 @@ module Types
   class MutationType < Types::BaseObject
     UserOps = GraphqlMutation.create_ops_for User
     ProductOps = GraphqlMutation.create_ops_for Product
+    AddressOps = GraphqlMutation.create_ops_for Address
 
     field :product, ProductOps, null: false do
       argument :id, ID, required: false
     end
 
     field :user, UserOps, null: false do
+      argument :id, ID, required: false
+    end
+
+    field :address, AddressOps, null: false do
       argument :id, ID, required: false
     end
 
@@ -22,6 +27,10 @@ module Types
 
     def user(id: nil)
       id ? User.find(id) : UserOps
+    end
+
+    def address(id: nil)
+      id ? Address.find(id) : AddressOps
     end
 
     def product(id: nil)

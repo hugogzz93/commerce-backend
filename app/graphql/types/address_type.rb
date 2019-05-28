@@ -4,13 +4,14 @@ module Types
     belongs_to :user
     has_many :orders
 
-    field :country, String, null: false
-    field :full_name, String, null: false
-    field :street1, String, null: false
+    field :id, ID, null: false
+    field :country, String, null: true
+    field :full_name, String, null: true
+    field :street1, String, null: true
     field :street2, String, null: true
-    field :city, String, null: false
-    field :zip, String, null: false
-    field :phone, String, null: false
+    field :city, String, null: true
+    field :zip, String, null: true
+    field :phone, String, null: true
     field :security_code, String, null: true
     field :instructions, String, null: true
   end
