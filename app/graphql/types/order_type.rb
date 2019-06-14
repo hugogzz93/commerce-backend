@@ -11,6 +11,7 @@ module Types
     # TODO: add classNames to relation helper
     # belongs_to :vendor, class_name: :user
     belongs_to :address
+    has_many :transactions
 
     field :id, ID, null: false
     field :client_id, ID, null: false

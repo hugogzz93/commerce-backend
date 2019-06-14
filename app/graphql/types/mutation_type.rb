@@ -3,6 +3,11 @@ module Types
     UserOps = GraphqlMutation.create_ops_for User
     ProductOps = GraphqlMutation.create_ops_for Product
     AddressOps = GraphqlMutation.create_ops_for Address
+    CategoryOps = GraphqlMutation.create_ops_for Category
+
+    field :category, CategoryOps, null: false do
+      argument :id, ID, required: false
+    end
 
     field :product, ProductOps, null: false do
       argument :id, ID, required: false
@@ -39,6 +44,10 @@ module Types
 
     def order(id: nil)
       id ? Order.find(id) : Mutations::OrderOps
+    end
+
+    def category(id: nil)
+      id ? Category.find(id) : Mutations::CategoryOps
     end
 
     def payment

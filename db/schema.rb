@@ -90,11 +90,19 @@ ActiveRecord::Schema.define(version: 2019_04_26_005501) do
     t.float "price", default: 0.0, null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.integer "status", default: 0, null: false
+    t.decimal "value", precision: 8, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_transactions_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,6 +5,7 @@ module Types
 
     field :id, ID, null: false
     field :name, String, null: false
+    field :description, String, null: true
     field :vendors, [UserType], null: false
   end
 end

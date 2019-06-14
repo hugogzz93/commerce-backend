@@ -12,6 +12,7 @@ module Mutations
       orders = req[:input][:orders].map do |raw_input|
         Order.new raw_input.to_h
       end
+
       begin
         OrderGrouper.create_group!(orders)
       rescue ActiveRecord::RecordInvalid => e

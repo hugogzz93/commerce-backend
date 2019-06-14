@@ -2,7 +2,7 @@ require 'ffaker'
 
 FactoryBot.define do
   factory :address do
-    country { FFaker::Address.name}
+    country { FFaker::Address.country }
     full_name { FFaker::Name.name }
     street1 { FFaker::Address.street_address }
     street2 { FFaker::Address.secondary_address }
